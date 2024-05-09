@@ -72,14 +72,16 @@ class ViewController: UIViewController {
     
     
     @IBAction func addData(_ sender: UIButton) {
-        let newStudent = Student(context: context)
-        newStudent.name = "Ayush Bhople"
-        newStudent.roll = 28
-        newStudent.branch = "CSE" // Change branch as needed
-        do {
-            try context.save()
-        } catch {
-            print("Error : - \(error)")
+        self.performSegue(withIdentifier: "FormFill", sender: self)
+    }
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FormFill" {
+//            let destinationVC = segue.destination as! FormViewController
+            print("Shifted to new screen")
         }
     }
     
