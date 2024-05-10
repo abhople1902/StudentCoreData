@@ -32,7 +32,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add Data"/>
                                 <connections>
-                                    <action selector="addData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LT6-Fb-2r5"/>
+                                    <action selector="navToForm:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xP9-uw-znM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1v-xH-Mh8">
@@ -97,11 +97,13 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdo-Z5-K48">
                                 <rect key="frame" x="148" y="155" width="193" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="NameStudent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aab-to-r1E">
                                 <rect key="frame" x="148" y="290" width="193" height="34"/>
+                                <accessibility key="accessibilityConfiguration" identifier="RollStudent"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -115,6 +117,16 @@
                                 </menu>
                                 <state key="normal" title="Button"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATF-Ay-0yS">
+                                <rect key="frame" x="133" y="555" width="126" height="50"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Submit">
+                                    <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="submitData:" destination="T0M-XG-j4D" eventType="touchUpInside" id="myk-bh-K4l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="POg-hv-6wc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -123,16 +135,20 @@
                             <constraint firstItem="POg-hv-6wc" firstAttribute="bottom" secondItem="fCm-qj-W3W" secondAttribute="bottom" constant="359" id="751-km-ojb"/>
                             <constraint firstItem="POg-hv-6wc" firstAttribute="trailing" secondItem="sdo-Z5-K48" secondAttribute="trailing" constant="52" id="7lr-1E-aeU"/>
                             <constraint firstItem="uCQ-1Y-0nC" firstAttribute="leading" secondItem="POg-hv-6wc" secondAttribute="leading" constant="65" id="8wk-1X-9B2"/>
+                            <constraint firstItem="POg-hv-6wc" firstAttribute="bottom" secondItem="ATF-Ay-0yS" secondAttribute="bottom" constant="213" id="Gaf-lN-GR8"/>
                             <constraint firstItem="POg-hv-6wc" firstAttribute="bottom" secondItem="key-Kl-RcJ" secondAttribute="bottom" constant="363" id="IqP-GD-SG9"/>
                             <constraint firstItem="key-Kl-RcJ" firstAttribute="top" secondItem="uCQ-1Y-0nC" secondAttribute="bottom" constant="116" id="LxO-2f-OFK"/>
                             <constraint firstItem="key-Kl-RcJ" firstAttribute="leading" secondItem="POg-hv-6wc" secondAttribute="leading" constant="65" id="MRy-cE-0JC"/>
                             <constraint firstItem="aab-to-r1E" firstAttribute="top" secondItem="sdo-Z5-K48" secondAttribute="bottom" constant="101" id="PBW-mW-hX9"/>
+                            <constraint firstItem="ATF-Ay-0yS" firstAttribute="leading" secondItem="POg-hv-6wc" secondAttribute="leading" constant="133" id="Pft-1W-pdA"/>
+                            <constraint firstItem="ATF-Ay-0yS" firstAttribute="top" secondItem="fCm-qj-W3W" secondAttribute="bottom" constant="96" id="ZJR-Rj-C5T"/>
                             <constraint firstItem="aab-to-r1E" firstAttribute="leading" secondItem="uCQ-1Y-0nC" secondAttribute="trailing" constant="55" id="egI-f6-ymx"/>
                             <constraint firstItem="POg-hv-6wc" firstAttribute="trailing" secondItem="aab-to-r1E" secondAttribute="trailing" constant="52" id="hKt-0G-k5g"/>
                             <constraint firstItem="POg-hv-6wc" firstAttribute="trailing" secondItem="fCm-qj-W3W" secondAttribute="trailing" constant="52" id="jbo-AU-ZKV"/>
                             <constraint firstItem="l2c-wG-sbG" firstAttribute="leading" secondItem="POg-hv-6wc" secondAttribute="leading" constant="65" id="jfV-EU-CGS"/>
                             <constraint firstItem="fCm-qj-W3W" firstAttribute="leading" secondItem="key-Kl-RcJ" secondAttribute="trailing" constant="29" id="rp5-fO-KpL"/>
                             <constraint firstItem="fCm-qj-W3W" firstAttribute="top" secondItem="aab-to-r1E" secondAttribute="bottom" constant="105" id="tej-qa-Ad5"/>
+                            <constraint firstItem="POg-hv-6wc" firstAttribute="trailing" secondItem="ATF-Ay-0yS" secondAttribute="trailing" constant="134" id="uZM-4k-0TD"/>
                             <constraint firstItem="uCQ-1Y-0nC" firstAttribute="top" secondItem="l2c-wG-sbG" secondAttribute="bottom" constant="114" id="xpY-j0-t5T"/>
                             <constraint firstItem="l2c-wG-sbG" firstAttribute="top" secondItem="POg-hv-6wc" secondAttribute="top" constant="59" id="ycN-fm-w1y"/>
                             <constraint firstItem="sdo-Z5-K48" firstAttribute="top" secondItem="POg-hv-6wc" secondAttribute="top" constant="52" id="zDd-Eq-QIQ"/>
@@ -141,6 +157,8 @@
                     <navigationItem key="navigationItem" id="hjI-WO-3w3"/>
                     <connections>
                         <outlet property="branchList" destination="fCm-qj-W3W" id="NGt-yU-5Y6"/>
+                        <outlet property="studentName" destination="sdo-Z5-K48" id="gFM-ly-aE0"/>
+                        <outlet property="studentRoll" destination="aab-to-r1E" id="DF1-YA-EsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wZu-1Q-eIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,7 +186,7 @@
     </scenes>
     <resources>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

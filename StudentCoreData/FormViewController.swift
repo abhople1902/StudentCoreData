@@ -7,47 +7,49 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class FormViewController: UIViewController {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Students.plist")
+    
 
     var branchListData = ["IT","CSE"]
     var branch: String = ""
     
-    let actionClosure = { (action: UIAction) in
-        print(action.title)
-    }
+    var studentData = StudentModel()
+    var studentNameDataEntered: String = "No data"
+    var studentRollDataEntered: Int = 0
     
     @IBOutlet weak var branchList: UIButton!
+    
+    
+    @IBOutlet weak var studentName: UITextField!
+    
+    
+    @IBOutlet weak var studentRoll: UITextField!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        studentName.returnKeyType = .next
+        studentRoll.returnKeyType = .done
+        
+        studentName.delegate = self
+        studentRoll.delegate = self
         
         setupPopUpButton()
-//        let button = UIButton(primaryAction: nil)
-//        
-//        var menuChildren: [UIMenuElement] = []
-//        for branch in branchList {
-//            menuChildren.append(UIAction(title: branch, handler: actionClosure))
-//        }
-//        
-//        button.menu = UIMenu(options: .displayInline, children: menuChildren)
-//        
-//        button.showsMenuAsPrimaryAction = true
-//        button.changesSelectionAsPrimaryAction = true
-//        
-//        button.frame = CGRect(x: 150, y: 200, width: 100, height: 40)
-//        self.view.addSubview(button)
     }
     
     
     func setupPopUpButton() {
         let popUpButtonClosure = { (action: UIAction) in
             if (action.title  == "IT") {
-                print("IT")
+                self.studentData.storeBranch(section: "IT")
             } else if (action.title == "CSE") {
-                print("CSE")
+                self.studentData.storeBranch(section: "CSE")
             }
         }
 //        let action = UIAction(title: "IT", handler: popUpButtonClosure)
@@ -57,9 +59,25 @@ class FormViewController: UIViewController {
             UIAction(title: "CSE", handler: popUpButtonClosure)
         ])
         branchList.showsMenuAsPrimaryAction = true
-        
     }
     
+    
+    
+    @IBAction func submitData(_ sender: UIButton) {
+        studentData.storeValue(name: studentNameDataEntered, roll: studentRollDataEntered)
+//        print(studentData.getBranch())
+//        print(studentData.getName())
+//        print(studentData.getRoll())
+        let newStudent = Student(context: context)
+        newStudent.name = studentData.getName()
+        newStudent.roll = Int64(studentData.getRoll())
+        newStudent.branch = studentData.getBranch()
+        do {
+            try context.save()
+        } catch {
+            print("Error : - \(error)")
+        }
+    }
     
     
     
@@ -74,4 +92,29 @@ class FormViewController: UIViewController {
     }
     */
 
+}
+
+//MARK: - UITextFieldDelegate
+
+extension FormViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        studentName.endEditing(true)
+        studentRoll.endEditing(true)
+        
+        if (textField.accessibilityIdentifier == "NameStudent") {
+            if let x = textField.text {
+                studentNameDataEntered = x
+            }
+        }
+        if (textField.accessibilityIdentifier == "RollStudent") {
+            if let x = textField.text {
+                studentRollDataEntered = Int(x) ?? 0
+            }
+        }
+        print("Name: - \(studentNameDataEntered) , Roll: - \(studentRollDataEntered)")
+        
+        return true
+    }
+    
 }

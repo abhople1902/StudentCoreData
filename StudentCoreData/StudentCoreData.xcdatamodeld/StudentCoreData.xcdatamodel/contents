@@ -3,6 +3,6 @@
     <entity name="Student" representedClassName=".Student" syncable="YES" codeGenerationType="class">
         <attribute name="branch" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <attribute name="roll" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="roll" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
 </model>

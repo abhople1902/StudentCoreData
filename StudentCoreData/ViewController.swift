@@ -71,11 +71,11 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func addData(_ sender: UIButton) {
+    
+    
+    @IBAction func navToForm(_ sender: UIButton) {
         self.performSegue(withIdentifier: "FormFill", sender: self)
     }
-    
-    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
